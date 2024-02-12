@@ -2,20 +2,20 @@
 import PackageDescription
 
 let package = Package(
-    name: "test",
+    name: "movies",
     platforms: [
         .iOS(.v13)
     ],
     products: [
         .library(
-            name: "test",
-            targets: ["test"]
+            name: "movies",
+            targets: ["movies"]
         ),
     ],
     targets: [
         .binaryTarget(
-            name: "test",
-            path: "./test.xcframework"
+            name: "movies",
+            path: "./movies.xcframework"
         ),
     ]
 )
