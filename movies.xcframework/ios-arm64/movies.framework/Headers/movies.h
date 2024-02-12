@@ -6,9 +6,9 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class MoviesMovie, MoviesKoin_coreKoin, MoviesKoin_coreModule, MoviesKoin_coreScope, MoviesKoin_coreParametersHolder, MoviesKotlinLazyThreadSafetyMode, MoviesKoin_coreLogger, MoviesKoin_coreExtensionManager, MoviesKoin_coreInstanceRegistry, MoviesKoin_corePropertyRegistry, MoviesKoin_coreScopeRegistry, MoviesKotlinThrowable, MoviesKotlinArray<T>, MoviesKoin_coreKoinDefinition<R>, MoviesKoin_coreInstanceFactory<T>, MoviesKoin_coreSingleInstanceFactory<T>, MoviesKoin_coreScopeDSL, MoviesKoin_coreLockable, MoviesStately_concurrencyThreadLocalRef<T>, MoviesKotlinEnumCompanion, MoviesKotlinEnum<E>, MoviesKoin_coreLevel, MoviesKoin_coreScopeRegistryCompanion, MoviesKoin_coreBeanDefinition<T>, MoviesKoin_coreInstanceFactoryCompanion, MoviesKoin_coreInstanceContext, MoviesKoin_coreKind, MoviesKoin_coreCallbacks<T>;
+@class MoviesMovie, MoviesKoin_coreKoin, MoviesKoin_coreModule, MoviesKoin_coreScope, MoviesKoin_coreParametersHolder, MoviesKotlinLazyThreadSafetyMode, MoviesKoin_coreLogger, MoviesKoin_coreInstanceRegistry, MoviesKoin_corePropertyRegistry, MoviesKoin_coreScopeRegistry, MoviesKotlinThrowable, MoviesKotlinArray<T>, MoviesKoin_coreKoinDefinition<R>, MoviesKoin_coreInstanceFactory<T>, MoviesKoin_coreSingleInstanceFactory<T>, MoviesKoin_coreScopeDSL, MoviesKoin_coreLockable, MoviesKoin_coreParametersHolderCompanion, MoviesKotlinEnumCompanion, MoviesKotlinEnum<E>, MoviesKoin_coreLevel, MoviesKoin_coreScopeRegistryCompanion, MoviesKoin_coreBeanDefinition<T>, MoviesKoin_coreInstanceFactoryCompanion, MoviesKoin_coreInstanceContext, MoviesKoin_coreKind, MoviesKoin_coreCallbacks<T>;
 
-@protocol MoviesKoin_coreKoinComponent, MoviesKoin_coreKoinScopeComponent, MoviesKoin_coreQualifier, MoviesKotlinKClass, MoviesKotlinLazy, MoviesKoin_coreScopeCallback, MoviesKotlinKDeclarationContainer, MoviesKotlinKAnnotatedElement, MoviesKotlinKClassifier, MoviesKotlinComparable, MoviesKoin_coreKoinExtension, MoviesKotlinIterator;
+@protocol MoviesKoin_coreKoinComponent, MoviesKoin_coreKoinScopeComponent, MoviesKoin_coreQualifier, MoviesKotlinKClass, MoviesKotlinLazy, MoviesKoin_coreScopeCallback, MoviesKotlinKDeclarationContainer, MoviesKotlinKAnnotatedElement, MoviesKotlinKClassifier, MoviesKotlinComparable, MoviesKotlinIterator;
 
 NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
@@ -230,11 +230,10 @@ __attribute__((swift_name("Koin_coreKoin")))
 - (MoviesKoin_coreScope * _Nullable)getScopeOrNullScopeId:(NSString *)scopeId __attribute__((swift_name("getScopeOrNull(scopeId:)")));
 - (id<MoviesKotlinLazy>)injectQualifier:(id<MoviesKoin_coreQualifier> _Nullable)qualifier mode:(MoviesKotlinLazyThreadSafetyMode *)mode parameters:(MoviesKoin_coreParametersHolder *(^ _Nullable)(void))parameters __attribute__((swift_name("inject(qualifier:mode:parameters:)")));
 - (id<MoviesKotlinLazy>)injectOrNullQualifier:(id<MoviesKoin_coreQualifier> _Nullable)qualifier mode:(MoviesKotlinLazyThreadSafetyMode *)mode parameters:(MoviesKoin_coreParametersHolder *(^ _Nullable)(void))parameters __attribute__((swift_name("injectOrNull(qualifier:mode:parameters:)")));
-- (void)loadModulesModules:(NSArray<MoviesKoin_coreModule *> *)modules allowOverride:(BOOL)allowOverride createEagerInstances:(BOOL)createEagerInstances __attribute__((swift_name("loadModules(modules:allowOverride:createEagerInstances:)")));
+- (void)loadModulesModules:(NSArray<MoviesKoin_coreModule *> *)modules allowOverride:(BOOL)allowOverride __attribute__((swift_name("loadModules(modules:allowOverride:)")));
 - (void)setPropertyKey:(NSString *)key value:(id)value __attribute__((swift_name("setProperty(key:value:)")));
 - (void)setupLoggerLogger:(MoviesKoin_coreLogger *)logger __attribute__((swift_name("setupLogger(logger:)")));
 - (void)unloadModulesModules:(NSArray<MoviesKoin_coreModule *> *)modules __attribute__((swift_name("unloadModules(modules:)")));
-@property (readonly) MoviesKoin_coreExtensionManager *extensionManager __attribute__((swift_name("extensionManager")));
 @property (readonly) MoviesKoin_coreInstanceRegistry *instanceRegistry __attribute__((swift_name("instanceRegistry")));
 @property (readonly) MoviesKoin_coreLogger *logger __attribute__((swift_name("logger")));
 @property (readonly) MoviesKoin_corePropertyRegistry *propertyRegistry __attribute__((swift_name("propertyRegistry")));
@@ -278,7 +277,7 @@ __attribute__((swift_name("Koin_coreModule")))
 - (MoviesKoin_coreKoinDefinition<id> *)factoryQualifier:(id<MoviesKoin_coreQualifier> _Nullable)qualifier definition:(id _Nullable (^)(MoviesKoin_coreScope *, MoviesKoin_coreParametersHolder *))definition __attribute__((swift_name("factory(qualifier:definition:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (void)includesModule:(MoviesKotlinArray<MoviesKoin_coreModule *> *)module __attribute__((swift_name("includes(module:)")));
-- (void)includesModule_:(id)module __attribute__((swift_name("includes(module_:)")));
+- (void)includesModule_:(NSArray<MoviesKoin_coreModule *> *)module __attribute__((swift_name("includes(module_:)")));
 - (void)indexPrimaryTypeInstanceFactory:(MoviesKoin_coreInstanceFactory<id> *)instanceFactory __attribute__((swift_name("indexPrimaryType(instanceFactory:)")));
 - (void)indexSecondaryTypesInstanceFactory:(MoviesKoin_coreInstanceFactory<id> *)instanceFactory __attribute__((swift_name("indexSecondaryTypes(instanceFactory:)")));
 - (NSArray<MoviesKoin_coreModule *> *)plusModules:(NSArray<MoviesKoin_coreModule *> *)modules __attribute__((swift_name("plus(modules:)")));
@@ -307,7 +306,9 @@ __attribute__((swift_name("Koin_coreScope")))
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 + (instancetype)new __attribute__((unavailable));
 - (void)close __attribute__((swift_name("close()")));
+- (MoviesKoin_coreScope *)doCopyScopeQualifier:(id<MoviesKoin_coreQualifier>)scopeQualifier id:(NSString *)id isRoot:(BOOL)isRoot _koin:(MoviesKoin_coreKoin *)_koin __attribute__((swift_name("doCopy(scopeQualifier:id:isRoot:_koin:)")));
 - (void)declareInstance:(id _Nullable)instance qualifier:(id<MoviesKoin_coreQualifier> _Nullable)qualifier secondaryTypes:(NSArray<id<MoviesKotlinKClass>> *)secondaryTypes allowOverride:(BOOL)allowOverride __attribute__((swift_name("declare(instance:qualifier:secondaryTypes:allowOverride:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (id)getQualifier:(id<MoviesKoin_coreQualifier> _Nullable)qualifier parameters:(MoviesKoin_coreParametersHolder *(^ _Nullable)(void))parameters __attribute__((swift_name("get(qualifier:parameters:)")));
 - (id _Nullable)getClazz:(id<MoviesKotlinKClass>)clazz qualifier:(id<MoviesKoin_coreQualifier> _Nullable)qualifier parameters:(MoviesKoin_coreParametersHolder *(^ _Nullable)(void))parameters __attribute__((swift_name("get(clazz:qualifier:parameters:)")));
 - (NSArray<id> *)getAll __attribute__((swift_name("getAll()")));
@@ -319,7 +320,8 @@ __attribute__((swift_name("Koin_coreScope")))
 - (id)getPropertyKey:(NSString *)key defaultValue:(id)defaultValue __attribute__((swift_name("getProperty(key:defaultValue:)")));
 - (id _Nullable)getPropertyOrNullKey:(NSString *)key __attribute__((swift_name("getPropertyOrNull(key:)")));
 - (MoviesKoin_coreScope *)getScopeScopeID:(NSString *)scopeID __attribute__((swift_name("getScope(scopeID:)")));
-- (id _Nullable)getSource __attribute__((swift_name("getSource()")));
+- (id _Nullable)getSource __attribute__((swift_name("getSource()"))) __attribute__((deprecated("No need to use getSource(). You can an use get() directly.")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (id<MoviesKotlinLazy>)injectQualifier:(id<MoviesKoin_coreQualifier> _Nullable)qualifier mode:(MoviesKotlinLazyThreadSafetyMode *)mode parameters:(MoviesKoin_coreParametersHolder *(^ _Nullable)(void))parameters __attribute__((swift_name("inject(qualifier:mode:parameters:)")));
 - (id<MoviesKotlinLazy>)injectOrNullQualifier:(id<MoviesKoin_coreQualifier> _Nullable)qualifier mode:(MoviesKotlinLazyThreadSafetyMode *)mode parameters:(MoviesKoin_coreParametersHolder *(^ _Nullable)(void))parameters __attribute__((swift_name("injectOrNull(qualifier:mode:parameters:)")));
 - (BOOL)isNotClosed __attribute__((swift_name("isNotClosed()")));
@@ -327,7 +329,7 @@ __attribute__((swift_name("Koin_coreScope")))
 - (void)registerCallbackCallback:(id<MoviesKoin_coreScopeCallback>)callback __attribute__((swift_name("registerCallback(callback:)")));
 - (NSString *)description __attribute__((swift_name("description()")));
 - (void)unlinkScopes:(MoviesKotlinArray<MoviesKoin_coreScope *> *)scopes __attribute__((swift_name("unlink(scopes:)")));
-@property (readonly) MoviesStately_concurrencyThreadLocalRef<NSMutableArray<MoviesKoin_coreParametersHolder *> *> *_parameterStackLocal __attribute__((swift_name("_parameterStackLocal")));
+@property (readonly) NSMutableArray<MoviesKoin_coreParametersHolder *> *_parameterStack __attribute__((swift_name("_parameterStack")));
 @property id _Nullable _source __attribute__((swift_name("_source")));
 @property (readonly) BOOL closed __attribute__((swift_name("closed")));
 @property (readonly) NSString *id __attribute__((swift_name("id")));
@@ -339,7 +341,7 @@ __attribute__((swift_name("Koin_coreScope")))
 __attribute__((swift_name("Koin_coreKoinScopeComponent")))
 @protocol MoviesKoin_coreKoinScopeComponent <MoviesKoin_coreKoinComponent>
 @required
-- (void)closeScope __attribute__((swift_name("closeScope()"))) __attribute__((deprecated("not used internaly anymore")));
+- (void)closeScope __attribute__((swift_name("closeScope()")));
 @property (readonly) MoviesKoin_coreScope *scope __attribute__((swift_name("scope")));
 @end
 
@@ -384,7 +386,8 @@ __attribute__((swift_name("KotlinKClass")))
 
 __attribute__((swift_name("Koin_coreParametersHolder")))
 @interface MoviesKoin_coreParametersHolder : MoviesBase
-- (instancetype)initWith_values:(NSMutableArray<id> *)_values useIndexedValues:(MoviesBoolean * _Nullable)useIndexedValues __attribute__((swift_name("init(_values:useIndexedValues:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWith_values:(NSMutableArray<id> *)_values __attribute__((swift_name("init(_values:)"))) __attribute__((objc_designated_initializer));
+@property (class, readonly, getter=companion) MoviesKoin_coreParametersHolderCompanion *companion __attribute__((swift_name("companion")));
 - (MoviesKoin_coreParametersHolder *)addValue:(id)value __attribute__((swift_name("add(value:)")));
 - (id _Nullable)component1 __attribute__((swift_name("component1()")));
 - (id _Nullable)component2 __attribute__((swift_name("component2()")));
@@ -402,8 +405,6 @@ __attribute__((swift_name("Koin_coreParametersHolder")))
 - (void)setI:(int32_t)i t:(id _Nullable)t __attribute__((swift_name("set(i:t:)")));
 - (int32_t)size __attribute__((swift_name("size()")));
 - (NSString *)description __attribute__((swift_name("description()")));
-@property int32_t index __attribute__((swift_name("index")));
-@property (readonly) MoviesBoolean * _Nullable useIndexedValues __attribute__((swift_name("useIndexedValues")));
 @property (readonly) NSArray<id> *values __attribute__((swift_name("values")));
 @end
 
@@ -457,16 +458,6 @@ __attribute__((swift_name("Koin_coreLogger")))
 - (void)logLvl:(MoviesKoin_coreLevel *)lvl msg_:(NSString *)msg __attribute__((swift_name("log(lvl:msg_:)")));
 - (void)warnMsg:(NSString *)msg __attribute__((swift_name("warn(msg:)")));
 @property MoviesKoin_coreLevel *level __attribute__((swift_name("level")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Koin_coreExtensionManager")))
-@interface MoviesKoin_coreExtensionManager : MoviesBase
-- (instancetype)initWith_koin:(MoviesKoin_coreKoin *)_koin __attribute__((swift_name("init(_koin:)"))) __attribute__((objc_designated_initializer));
-- (void)close __attribute__((swift_name("close()")));
-- (id<MoviesKoin_coreKoinExtension>)getExtensionId:(NSString *)id __attribute__((swift_name("getExtension(id:)")));
-- (id<MoviesKoin_coreKoinExtension> _Nullable)getExtensionOrNullId:(NSString *)id __attribute__((swift_name("getExtensionOrNull(id:)")));
-- (void)registerExtensionId:(NSString *)id extension:(id<MoviesKoin_coreKoinExtension>)extension __attribute__((swift_name("registerExtension(id:extension:)")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -532,9 +523,7 @@ __attribute__((swift_name("Koin_coreInstanceFactory")))
 - (T _Nullable)createContext:(MoviesKoin_coreInstanceContext *)context __attribute__((swift_name("create(context:)")));
 - (void)dropScope:(MoviesKoin_coreScope * _Nullable)scope __attribute__((swift_name("drop(scope:)")));
 - (void)dropAll __attribute__((swift_name("dropAll()")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (T _Nullable)getContext:(MoviesKoin_coreInstanceContext *)context __attribute__((swift_name("get(context:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (BOOL)isCreatedContext:(MoviesKoin_coreInstanceContext * _Nullable)context __attribute__((swift_name("isCreated(context:)")));
 @property (readonly) MoviesKoin_coreBeanDefinition<T> *beanDefinition __attribute__((swift_name("beanDefinition")));
 @end
@@ -566,13 +555,14 @@ __attribute__((swift_name("Koin_coreScopeCallback")))
 - (void)onScopeCloseScope:(MoviesKoin_coreScope *)scope __attribute__((swift_name("onScopeClose(scope:)")));
 @end
 
-__attribute__((swift_name("Stately_concurrencyThreadLocalRef")))
-@interface MoviesStately_concurrencyThreadLocalRef<T> : MoviesBase
-- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
-+ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-- (T _Nullable)get __attribute__((swift_name("get()")));
-- (void)remove __attribute__((swift_name("remove()")));
-- (void)setValue:(T _Nullable)value __attribute__((swift_name("set(value:)")));
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Koin_coreParametersHolder.Companion")))
+@interface MoviesKoin_coreParametersHolderCompanion : MoviesBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) MoviesKoin_coreParametersHolderCompanion *shared __attribute__((swift_name("shared")));
+@property (readonly) int32_t MAX_PARAMS __attribute__((swift_name("MAX_PARAMS")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -596,14 +586,6 @@ __attribute__((swift_name("Koin_coreLevel")))
 @property (class, readonly) MoviesKoin_coreLevel *error __attribute__((swift_name("error")));
 @property (class, readonly) MoviesKoin_coreLevel *none __attribute__((swift_name("none")));
 + (MoviesKotlinArray<MoviesKoin_coreLevel *> *)values __attribute__((swift_name("values()")));
-@property (class, readonly) NSArray<MoviesKoin_coreLevel *> *entries __attribute__((swift_name("entries")));
-@end
-
-__attribute__((swift_name("Koin_coreKoinExtension")))
-@protocol MoviesKoin_coreKoinExtension
-@required
-- (void)onClose __attribute__((swift_name("onClose()")));
-@property MoviesKoin_coreKoin *koin __attribute__((swift_name("koin")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -654,8 +636,8 @@ __attribute__((swift_name("Koin_coreInstanceFactoryCompanion")))
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Koin_coreInstanceContext")))
 @interface MoviesKoin_coreInstanceContext : MoviesBase
-- (instancetype)initWithLogger:(MoviesKoin_coreLogger *)logger scope:(MoviesKoin_coreScope *)scope parameters:(MoviesKoin_coreParametersHolder * _Nullable)parameters __attribute__((swift_name("init(logger:scope:parameters:)"))) __attribute__((objc_designated_initializer));
-@property (readonly) MoviesKoin_coreLogger *logger __attribute__((swift_name("logger")));
+- (instancetype)initWithKoin:(MoviesKoin_coreKoin *)koin scope:(MoviesKoin_coreScope *)scope parameters:(MoviesKoin_coreParametersHolder * _Nullable)parameters __attribute__((swift_name("init(koin:scope:parameters:)"))) __attribute__((objc_designated_initializer));
+@property (readonly) MoviesKoin_coreKoin *koin __attribute__((swift_name("koin")));
 @property (readonly) MoviesKoin_coreParametersHolder * _Nullable parameters __attribute__((swift_name("parameters")));
 @property (readonly) MoviesKoin_coreScope *scope __attribute__((swift_name("scope")));
 @end
@@ -670,7 +652,6 @@ __attribute__((swift_name("Koin_coreKind")))
 @property (class, readonly) MoviesKoin_coreKind *factory __attribute__((swift_name("factory")));
 @property (class, readonly) MoviesKoin_coreKind *scoped __attribute__((swift_name("scoped")));
 + (MoviesKotlinArray<MoviesKoin_coreKind *> *)values __attribute__((swift_name("values()")));
-@property (class, readonly) NSArray<MoviesKoin_coreKind *> *entries __attribute__((swift_name("entries")));
 @end
 
 __attribute__((objc_subclassing_restricted))
